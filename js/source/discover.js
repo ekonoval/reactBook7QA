@@ -30,7 +30,7 @@ ReactDOM.render(
     </div>
 
     <h2>Suggest</h2>
-    <Suggest/>
+    <Suggest options={['eenie', 'meenie', 'miney', 'mo']}/>
 
     {/* more components go here... */}
   </div>,

@@ -9,11 +9,27 @@ class Suggest extends React.Component {
     const randomId = Math.random().toString(16).substring(2);
 
     return (
-      <div id={randomId} className="Suggest">
-        <h5>suggest component stub</h5>
+      <div className="Suggest">
+        <input
+          list={randomId}
+          defaultValue={this.props.defaultValue}
+          ref="lowLevelInput"
+          id={this.props.id}
+        />
+
+        <datalist id={randomId}>{
+          this.props.options.map((item, idx) =>
+            <option value={item} key={idx} />
+          )
+        }</datalist>
+
       </div>
     );
   }
 }
+
+Suggest.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default Suggest;
