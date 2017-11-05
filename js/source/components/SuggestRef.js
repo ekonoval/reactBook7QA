@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-class Suggest extends React.Component {
+class SuggestRef extends React.Component {
   getValue() {
     return this.refs.lowLevelInput.value;
   }
@@ -44,8 +44,8 @@ class Suggest extends React.Component {
   }
 }
 
-Suggest.propTypes = {
+SuggestRef.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default Suggest;
+export default SuggestRef;

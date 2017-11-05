@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Logo from './components/Logo';
 import Button from './components/Button';
-import Suggest from './components/Suggest';
+import SuggestRef from './components/SuggestRef';
 
 ReactDOM.render(
   <div style={{padding: '20px'}}>
@@ -29,8 +29,8 @@ ReactDOM.render(
       <Button className="custom">I do nothing</Button>
     </div>
 
-    <h2>Suggest</h2>
-    <Suggest options={['eenie', 'meenie', 'miney', 'mo']}/>
+    <h2>SuggestRef</h2>
+    <SuggestRef options={['eenie', 'meenie', 'miney', 'mo']}/>
 
     {/* more components go here... */}
   </div>,
