@@ -4,3 +4,6 @@ js/build
 bundle.css
 bundle.js
 discover-bundle.js
+
+#symlink
+/watch.bat
