@@ -42,7 +42,7 @@ class Rating extends Component {
       stars.push(
         <span
           className={i <= this.state.tmpRating ? 'RatingOn' : null}
-          // key={i}
+          key={i}
           onClick={!this.props.readonly && this.setRating.bind(this, i)}
           onMouseOver={!this.props.readonly && this.setTemp.bind(this, i)}
         >
@@ -58,6 +58,7 @@ class Rating extends Component {
           'RatingReadonly': this.props.readonly
         })}
         onMouseOut={this.reset.bind(this)}
+        // onMouseOut={(e) => {this.reset(this)}}
       >
         {stars}
         {
