@@ -16,6 +16,22 @@ class Suggest extends React.Component {
           ref="lowLevelInput"
           id={this.props.id}
         />
+{/*
+
+        <datalist id={randomId}>{
+          this.props.options.map(function(item, idx) {
+            return <option value={item} key={idx} />;
+          })
+        }</datalist>
+
+        <datalist id={randomId}>{
+          this.props.options.map((item, idx) => {
+              idx += 99;
+              return <option value={item} key={idx}/>
+            }
+          )
+        }</datalist>
+*/}
 
         <datalist id={randomId}>{
           this.props.options.map((item, idx) =>
