@@ -7,10 +7,42 @@ import Button from './components/Button';
 import SuggestRef from './components/SuggestRef';
 import Suggest from './components/Suggest';
 import Rating from './components/Rating';
+import FormInput from './components/FormInput';
 
 ReactDOM.render(
   <div style={{padding: '20px'}}>
     <h1>Component discoverer</h1>
+
+    <h2>Form inputs</h2>
+    <table><tbody>
+      <tr>
+        <td>Vanilla input</td>
+        <td><FormInput /></td>
+      </tr>
+{/*      <tr>
+        <td>Prefilled</td>
+        <td><FormInput defaultValue="it's like a default" /></td>
+      </tr>
+      <tr>
+        <td>Year</td>
+        <td><FormInput type="year" /></td>
+      </tr>
+      <tr>
+        <td>Rating</td>
+        <td><FormInput type="rating" defaultValue={4} /></td>
+      </tr>
+      <tr>
+        <td>Suggest</td>
+        <td><FormInput
+          type="suggest"
+          options={['red', 'green', 'blue']}
+          defaultValue="green" /></td>
+      </tr>
+      <tr>
+        <td>Vanilla textarea</td>
+        <td><FormInput type="text" /></td>
+      </tr>*/}
+    </tbody></table>
 
     <h2>Logo</h2>
     <div style={{display: 'inline-block', background: 'purple'}}>
