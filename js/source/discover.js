@@ -19,17 +19,13 @@ ReactDOM.render(
         <td>Vanilla input</td>
         <td><FormInput /></td>
       </tr>
-{/*      <tr>
+      <tr>
         <td>Prefilled</td>
         <td><FormInput defaultValue="it's like a default" /></td>
       </tr>
       <tr>
         <td>Year</td>
         <td><FormInput type="year" /></td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td><FormInput type="rating" defaultValue={4} /></td>
       </tr>
       <tr>
         <td>Suggest</td>
@@ -41,7 +37,11 @@ ReactDOM.render(
       <tr>
         <td>Vanilla textarea</td>
         <td><FormInput type="text" /></td>
-      </tr>*/}
+      </tr>
+      <tr>
+        <td>Rating</td>
+        <td><FormInput type="rating" defaultValue={4} /></td>
+      </tr>
     </tbody></table>
 
     <h2>Logo</h2>
@@ -67,6 +67,7 @@ ReactDOM.render(
     <SuggestRef id="customSuggestRefId" options={['eenie', 'meenie', 'miney', 'mo']}/>
 
     <h2>Suggest With State</h2>
+    <div>['eenie', 'meenie', 'miney', 'mo']</div>
     <Suggest id="suggestStateful" options={['eenie', 'meenie', 'miney', 'mo']}/>
 
     <h2>Rating</h2>

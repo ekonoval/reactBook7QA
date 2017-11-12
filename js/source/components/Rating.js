@@ -38,7 +38,7 @@ class Rating extends Component {
 
   render() {
     let stars = [];
-    for(let i=1; i < this.props.max; i++) {
+    for(let i=1; i <= this.props.max; i++) {
       stars.push(
         <span
           className={i <= this.state.tmpRating ? 'RatingOn' : null}
