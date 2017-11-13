@@ -36,11 +36,21 @@ class Form extends Component {
         return (
           <div className="FormRow" key={field.id}>
             <span className="FormLabel">{field.label}:</span>
+            {/* just an example of anonymous function */}
+            {(() => {
+              if (field.type === 'rating') {
+                  return <Rating readonly={true} defaultValue={parseInt(prefilledVal, 10)}/>;
+              } else {
+                return <div>{prefilledVal}</div>;
+              }
+            })()}
+{/*
             {
               field.type === 'rating'
                 ? <Rating readonly={true} defaultValue={parseInt(prefilledVal, 10)}/>
                 : <div>{prefilledVal}</div>
             }
+            */}
           </div>
         );
       }, this)}
