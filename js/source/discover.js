@@ -8,11 +8,34 @@ import SuggestRef from './components/SuggestRef';
 import Suggest from './components/Suggest';
 import Rating from './components/Rating';
 import FormInput from './components/FormInput';
+import Form from './components/Form';
 
 ReactDOM.render(
   <div style={{padding: '20px'}}>
     <h1>Component discoverer</h1>
 
+    <h2>Form</h2>
+
+    <Form
+      fields={[
+        {label: 'Rating', type: 'rating', id: 'rateme'},
+        {label: 'Greetings', id: 'freetext'},
+      ]}
+      initialData={{rateme: 4, freetext: 'Hello'}}
+    />
+
+    <h2>Form readonly</h2>
+    <Form
+      fields={[
+        {label: 'Rating', type: 'rating', id: 'rateme'},
+        {label: 'Greetings', id: 'freetext'},
+      ]}
+      initialData={{rateme: 4, freetext: 'Hello'}}
+      readonly={true}
+    />
+
+    {/* formInuput */}
+    <div className="form-inputs">
     <h2>Form inputs</h2>
     <table><tbody>
       <tr>
@@ -43,6 +66,7 @@ ReactDOM.render(
         <td><FormInput type="rating" defaultValue={4} /></td>
       </tr>
     </tbody></table>
+    </div>
 
     <h2>Logo</h2>
     <div style={{display: 'inline-block', background: 'purple'}}>
