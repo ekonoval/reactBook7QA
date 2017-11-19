@@ -249,5 +249,9 @@ Excel.propTypes = {
   onDataChange: PropTypes.func,
 };
 
+Excel.defaultProps = {
+  onDataChange: () => {}
+};
+
 
 export default Excel;

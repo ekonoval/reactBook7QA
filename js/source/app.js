@@ -26,7 +26,6 @@ ReactDOM.render(
       <Logo /> Welcome to The App!
       {/*<ExcelOld headers={headers} initialData={data} />*/}
 
-      <h2>Excel new</h2>
       <Excel
         schema={schema}
         initialData={data}
