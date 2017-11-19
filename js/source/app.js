@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './components/Logo';
-import Excel from './components/Excel';
+import ExcelOld from './components/ExcelOld';
 
 var headers = localStorage.getItem('headers');
 var data = localStorage.getItem('data');
@@ -20,7 +20,7 @@ ReactDOM.render(
   <div>
     <h1>
       <Logo /> Welcome to The App!
-      <Excel headers={headers} initialData={data} />
+      <ExcelOld headers={headers} initialData={data} />
     </h1>
   </div>,
   document.getElementById('pad')

@@ -1,8 +1,8 @@
 import React from 'react';
 //import React, {Component, PropTypes} from 'react';
 
-var Excel = React.createClass({
-  displayName: 'Excel',
+var ExcelOld = React.createClass({
+  displayName: 'ExcelOld',
 
   propTypes: {
     headers: React.PropTypes.arrayOf(
@@ -183,4 +183,4 @@ var Excel = React.createClass({
   }
 });
 
-export default Excel;
+export default ExcelOld;
