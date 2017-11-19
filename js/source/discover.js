@@ -18,6 +18,7 @@ ReactDOM.render(
 
     <h2>Dialogs</h2>
     <Dialog
+      // modal={true}
       header="Out-of-the-box example"
       onAction={type => alert(type)}>
       Hello, dialog!
