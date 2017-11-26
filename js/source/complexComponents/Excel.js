@@ -10,6 +10,7 @@ import Rating from '../components/Rating';
 class Excel extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       data: this.props.initialData,
       sortby: null, // schema.id
@@ -19,9 +20,9 @@ class Excel extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({data: nextProps.initialData});
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({data: nextProps.initialData});
+  // }
 
   _fireDataChange(data) {
     this.props.onDataChange(data);
@@ -32,8 +33,8 @@ class Excel extends Component {
     const descending = this.state.sortby === key && !this.state.descending;
     data.sort(function (a, b) {
       return descending
-        ? (a[column] < b[column] ? 1 : -1)
-        : (a[column] > b[column] ? 1 : -1);
+        ? (a[key] < b[key] ? 1 : -1)
+        : (a[key] > b[key] ? 1 : -1);
     });
     this.setState({
       data: data,
@@ -104,7 +105,7 @@ class Excel extends Component {
     return (
       <div className="Excel">
         {this._renderTable()}
-        {this._renderDialog()}
+        {/*{this._renderDialog()}*/}
       </div>
     );
   }
@@ -167,10 +168,12 @@ class Excel extends Component {
             if (!item.show) {
               return null;
             }
+
             let title = item.label;
             if (this.state.sortby === item.id) {
               title += this.state.descending ? ' \u2191' : ' \u2193';
             }
+            
             return (
               <th
                 className={`schema-${item.id}`}
@@ -182,11 +185,10 @@ class Excel extends Component {
             );
           }, this)
         }
-          <
-            th className="ExcelNotSortable">Actions
-          </th>
+          <th className="ExcelNotSortable">Actions</th>
         </tr>
         </thead>
+
         <tbody onDoubleClick={this._showEditor.bind(this)}>
         {this.state.data.map((row, rowidx) => {
           return (

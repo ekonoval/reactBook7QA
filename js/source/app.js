@@ -16,9 +16,15 @@ import schema from './schema';
 //   data = [['Test', '2015', '3', 'meh']];
 // }
 
+// like [{"name":"$2 chuck","year":2015,"grape":"Merlot","rating":3,"comments":"Nice for the price"}, ...]
 let data = {};
 schema.forEach((item) => data[item.id] = item.sample);
-data = [data];
+data = [data, JSON.parse(JSON.stringify(data))];
+
+data[1]['year'] = 1999;
+data[1]['name'] = "cloned";
+
+// console.log(schema);console.log(data);
 
 ReactDOM.render(
   <div>
