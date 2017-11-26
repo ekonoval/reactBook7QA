@@ -190,40 +190,49 @@ class Excel extends Component {
         </thead>
 
         <tbody onDoubleClick={this._showEditor.bind(this)}>
+        {/* iterate over state.data */}
         {this.state.data.map((row, rowidx) => {
           return (
             <tr key={rowidx}>{
+              // iterate over row.keys
               Object.keys(row).map((cell, idx) => {
-                const schema = this.props.schema[idx];
-                if (!schema || !schema.show) {
+                const schemaCell = this.props.schema[idx];
+
+                if (!schemaCell || !schemaCell.show) {
                   return null;
                 }
-                const isRating = schema.type === 'rating';
+
+                const isRating = schemaCell.type === 'rating';
                 const edit = this.state.edit;
                 let content = row[cell];
-                if (!isRating && edit && edit.row === rowidx && edit.key ===
-                  schema.id) {
+
+                if (
+                  !isRating
+                  && edit && edit.row === rowidx
+                  && edit.key === schemaCell.id
+                ) {
                   content = (
                     <form onSubmit={this._save.bind(this)}>
-                      <FormInput ref="input" {...schema} defaultValue={content}/>
+                      <FormInput ref="input" {...schemaCell} defaultValue={content}/>
                     </form>
                   );
                 } else if (isRating) {
                   content = <Rating readonly={true} defaultValue={Number(content)}/>;
                 }
+
                 return (
                   <td
                     className={classNames({
-                      [`schema-${schema.id}`]: true,
+                      [`schema-${schemaCell.id}`]: true,
                       'ExcelEditable': !isRating,
-                      'ExcelDataLeft': schema.align === 'left',
-                      'ExcelDataRight': schema.align === 'right',
-                      'ExcelDataCenter': schema.align !== 'left' &&
-                      schema.align !== 'right',
+                      'ExcelDataLeft': schemaCell.align === 'left',
+                      'ExcelDataRight': schemaCell.align === 'right',
+                      'ExcelDataCenter': schemaCell.align !== 'left' &&
+                      schemaCell.align !== 'right',
                     })}
                     key={idx}
                     data-row={rowidx}
-                    data-key={schema.id}>
+                    data-key={schemaCell.id}>
                     {content}
                   </td>
                 );
