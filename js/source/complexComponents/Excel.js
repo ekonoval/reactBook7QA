@@ -65,7 +65,9 @@ class Excel extends Component {
     this._fireDataChange(data);
   }
 
-  _actionClick(rowidx, action) {
+  _actionClick(rowidx, action, p3) {
+    // console.log(arguments);
+    // console.log(rowidx, action);
     this.setState({dialog: {type: action, idx: rowidx}});
   }
 
@@ -202,6 +204,7 @@ class Excel extends Component {
                   return null;
                 }
 
+                // composing each cell content
                 const isRating = schemaCell.type === 'rating';
                 const edit = this.state.edit;
                 let content = row[cell];
@@ -238,7 +241,14 @@ class Excel extends Component {
                 );
               }, this)}
               <td className="ExcelDataCenter">
-                <Actions onAction={this._actionClick.bind(this, rowidx)}/>
+                {/* automatically appends onAction - `type` param + some internal stuff */}
+                {/*<Actions onAction={this._actionClick.bind(this, rowidx)}/>*/}
+
+                {/* more detailed method - no additional auto params are appended */}
+                <Actions onAction={(type) => {
+                  this._actionClick(rowidx, type); // pay attention not like below
+                  //this._actionClick.bind(this, rowidx, type)
+                }}/>
               </td>
             </tr>
           );
