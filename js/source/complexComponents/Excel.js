@@ -65,6 +65,13 @@ class Excel extends Component {
     this._fireDataChange(data);
   }
 
+  _editorKeyDown(e) {
+    // escape
+    if (e.keyCode === 27) {
+      this.setState({edit: null});
+    }
+  }
+
   _actionClick(rowidx, action, p3) {
     // console.log(arguments);
     // console.log(rowidx, action);
@@ -215,7 +222,7 @@ class Excel extends Component {
                   && edit.key === schemaCell.id
                 ) {
                   content = (
-                    <form onSubmit={this._save.bind(this)}>
+                    <form onSubmit={this._save.bind(this)} onKeyDown={this._editorKeyDown.bind(this)}>
                       <FormInput ref="input" {...schemaCell} defaultValue={content}/>
                     </form>
                   );
