@@ -137,8 +137,9 @@ class Excel extends Component {
   }
 
   _renderDeleteDialog() {
-    const first = this.state.data[this.state.dialog.idx];
-    const nameguess = first[Object.keys(first)[0]];
+    const row = this.state.data[this.state.dialog.idx];
+    const nameguess = row[Object.keys(row)[0]];
+
     return (
       <Dialog
         modal={true}
@@ -147,6 +148,7 @@ class Excel extends Component {
         onAction={this._deleteConfirmationClick.bind(this)}
       >
         {`Are you sure you want to delete "${nameguess}"?`}
+        {/*Are you sure you want to delete "{nameguess}"?*/}
       </Dialog>
     );
   }
@@ -161,7 +163,7 @@ class Excel extends Component {
         onAction={this._saveDataDialog.bind(this)}
       >
         <Form
-          ref="form"
+          ref="form" // pay attention here - not defined as property
           fields={this.props.schema}
           initialData={this.state.data[this.state.dialog.idx]}
           readonly={readonly}/>
