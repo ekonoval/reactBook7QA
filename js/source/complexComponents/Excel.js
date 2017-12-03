@@ -114,7 +114,7 @@ class Excel extends Component {
     return (
       <div className="Excel">
         {this._renderTable()}
-        {/*{this._renderDialog()}*/}
+        {this._renderDialog()}
       </div>
     );
   }
@@ -123,6 +123,7 @@ class Excel extends Component {
     if (!this.state.dialog) {
       return null;
     }
+
     switch (this.state.dialog.type) {
       case 'delete':
         return this._renderDeleteDialog();
