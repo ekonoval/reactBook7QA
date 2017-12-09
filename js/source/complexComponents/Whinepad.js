@@ -84,6 +84,28 @@ class Whinepad extends Component {
               className="WhinepadToolbarAddButton">
               + add
             </Button>
+
+            <Button
+              onClick={() => {
+                /**
+                 * When Excel::componentWillReceiveProps() is defined then setState() updates Excel data
+                 * @see _addNew method too - without Excel::componentWillReceiveProps
+                 * new item appears only after page update.
+                 * Working with this.state directly updates excel event without Excel::componentWillReceiveProps
+                 */
+                let data = Array.from(this.state.data);
+                //data.unshift(this.refs.form.getData());
+
+                data.splice(0, 1);
+                console.log(data);
+
+                this.setState({
+                  data: data
+                });
+              }}
+            >
+              test
+            </Button>
           </div>
           <div className="WhinepadToolbarSearch">
             <input

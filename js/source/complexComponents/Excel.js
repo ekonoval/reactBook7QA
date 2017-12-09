@@ -20,9 +20,9 @@ class Excel extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({data: nextProps.initialData});
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({data: nextProps.initialData});
+  }
 
   _fireDataChange(data) {
     this.props.onDataChange(data);
