@@ -61,15 +61,26 @@ class Whinepad extends Component {
       this.setState({data: this._preSearchData});
       return;
     }
+
     const fields = this.props.schema.map(item => item.id);
+
     const searchdata = this._preSearchData.filter(row => {
+      let fieldName;
+
       for (let f = 0; f < fields.length; f++) {
-        if (row[fields[f]].toString().toLowerCase().indexOf(needle) > -1) {
+        fieldName = fields[f];
+
+        if (fieldName === 'rating') {
+          continue;
+        }
+
+        if (row[fieldName].toString().toLowerCase().indexOf(needle) > -1) {
           return true;
         }
       }
       return false;
     });
+
     this.setState({data: searchdata});
   }
 
@@ -78,6 +89,8 @@ class Whinepad extends Component {
       <div className="Whinepad">
 
         <div className="WhinepadToolbar">
+
+          {/* toolbars */}
           <div className="WhinepadToolbarAdd">
             <Button
               onClick={this._addNewDialog.bind(this)}
@@ -107,6 +120,8 @@ class Whinepad extends Component {
               test
             </Button>
           </div>
+
+          {/* search */}
           <div className="WhinepadToolbarSearch">
             <input
               placeholder="Search..."
@@ -116,6 +131,7 @@ class Whinepad extends Component {
           </div>
         </div>
 
+        {/* Excel */}
         <div className="WhinepadDatagrid">
           <Excel
             schema={this.props.schema}
@@ -123,6 +139,7 @@ class Whinepad extends Component {
             onDataChange={this._onExcelDataChange.bind(this)}/>
         </div>
 
+        {/* addNew dialog render */}
         {this.state.addnew
           ? <Dialog
             modal={true}
