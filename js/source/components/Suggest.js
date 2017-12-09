@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 class Suggest extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: props.defaultValue}
+    this.state = {value: ('defaultValue' in props && props.defaultValue !== undefined) ? props.defaultValue : ''};
   }
 
   getValue() {
