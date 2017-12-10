@@ -2,6 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import Button from './Button';
 
 class Dialog extends Component {
+
+  constructor() {
+    super();
+    this.onEscape = this.onEscape.bind(this);
+  }
+
   render() {
     return (
       <div className={this.props.modal ? 'Dialog DialogModal' : 'Dialog'}>
@@ -27,13 +33,23 @@ class Dialog extends Component {
     );
   }
 
+  /**
+   * @see https://github.com/conorhastings/react-close-on-escape/blob/master/src/index.js
+   * @see constructor
+   */
+  onEscape() {
+    this.props.onAction('dismiss');
+  }
+
   componentDidMount() {
+    document.addEventListener('keydown', this.onEscape);
     if (this.props.modal) {
       document.body.classList.add('DialogModalOpen');
     }
   }
 
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.onEscape);
     document.body.classList.remove('DialogModalOpen');
   }
 }
