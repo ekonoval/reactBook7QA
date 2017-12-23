@@ -37,8 +37,10 @@ class Dialog extends Component {
    * @see https://github.com/conorhastings/react-close-on-escape/blob/master/src/index.js
    * @see constructor
    */
-  onEscape() {
-    this.props.onAction('dismiss');
+  onEscape({keyCode}) {
+    if (keyCode === 27) {
+      this.props.onAction('dismiss');
+    }
   }
 
   componentDidMount() {
