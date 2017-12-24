@@ -1,8 +1,10 @@
+/* @flow */
+
 import classNames from 'classnames';
 //import React, {PropTypes} from 'react';
 import React from 'react';
 
-function Button(props) {
+function Button(props:Object) {
   const cssclasses = classNames('Button', props.className);
   return props.href
     ? <a {...props} className={cssclasses}/>
