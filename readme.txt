@@ -1,0 +1,1 @@
+Don't install eslint and plugins locally when there is global version. It ruins everything!

@@ -8,11 +8,7 @@
     ]
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
-    "plugins": [
-      "babel",
-      "react"
-    ]
+    "parser": "babel-eslint"
   },
   "dependencies": {},
   "devDependencies": {}
