@@ -1,0 +1,19 @@
+{
+  "name": "chapter7-qa",
+  "version": "0.0.1",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "babel",
+      "react"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
