@@ -25,5 +25,7 @@
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1
     ,"no-unused-vars": "off"
+    ,"no-unreachable": "off"
+    ,"no-console": "off"
   }
 }
