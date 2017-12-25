@@ -2,6 +2,9 @@
   // parser have to be kept in package.json to make it working
   //"parser": "babel-eslint",
 
+  // for eslint + flowtype parser have to be here too  - what a mess.....
+  "parser": "babel-eslint",
+
   "plugins": [
     "babel",
     "react"
