@@ -16,7 +16,7 @@ export type FormInputField = {
   label?: string,
 };
 
-class FormInput extends Component {
+class FormInput extends Component<FormInputField> {
 
   props: FormInputField;
 
