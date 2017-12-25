@@ -2,7 +2,7 @@
 # js transform
 echo "^^ statted at "; date;
 
-babel --presets react,es2015 js/source/ -d js/build
+babel --presets react,es2015,stage-0 js/source/ -d js/build
 echo "---->>> babel done"; date;
 
 # js package
