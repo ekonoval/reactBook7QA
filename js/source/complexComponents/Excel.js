@@ -216,7 +216,7 @@ class Excel extends Component<Props, State> {
     );
   }
 
-  _renderFormDialog(readonly) {
+  _renderFormDialog(readonly:?boolean) {
     return (
       <Dialog
         modal={true}
@@ -228,7 +228,7 @@ class Excel extends Component<Props, State> {
         <Form
           ref="form" // pay attention here - not defined as property
           fields={this.props.schema}
-          initialData={this.state.data[this.state.dialog.idx]}
+          initialData={this.state.data[this._getDialogIndex()]}
           readonly={readonly}/>
       </Dialog>
     );

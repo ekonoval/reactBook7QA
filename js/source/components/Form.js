@@ -8,7 +8,7 @@ import type {FormInputField, FormInputFieldValue} from "./FormInput";
 type FormProps = {
   fields: Array<FormInputField>,
   initialData?: Object,
-  readonly?: boolean,
+  readonly?: ?boolean,
 };
 
 // Form.propTypes = {
