@@ -26,13 +26,13 @@ class Form extends Component<FormProps> {
 
   props: FormProps;
 
-  // getData() {
-  //   let data = {};
-  //   this.props.fields.forEach(field =>
-  //     data[field.id] = this.refs[field.id].getValue()
-  //   );
-  //   return data;
-  // }
+  getData() {
+    let data:Object = {};
+    this.props.fields.forEach(field =>
+      data[field.id] = this.refs[field.id].getValue()
+    );
+    return data;
+  }
 
   render() {
     return (
