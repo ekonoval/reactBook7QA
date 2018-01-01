@@ -28,7 +28,7 @@ class Form extends Component<FormProps> {
 
   getData() {
     let data:Object = {};
-    this.props.fields.forEach(field =>
+    this.props.fields.forEach((field:FormInputField) =>
       data[field.id] = this.refs[field.id].getValue()
     );
     return data;
