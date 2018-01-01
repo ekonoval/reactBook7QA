@@ -1,3 +1,4 @@
+//@flow
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 
@@ -7,8 +8,56 @@ import Form from '../components/Form';
 import FormInput from '../components/FormInput';
 import Rating from '../components/Rating';
 
-class Excel extends Component {
-  constructor(props) {
+type Data = Array<Object>;
+
+type Props = {
+  schema: Array<Object>,
+  initialData: Data,
+  onDataChange: Function,
+};
+
+type State = {
+  data: Data,
+  sortby: ?string, // schema.id
+  descending: boolean,
+  edit: ?EditState,
+  dialog: ?DialogState
+};
+
+type EditState = {
+  row: number,
+  key: string
+}
+
+type DialogState = {
+  idx: number,
+  type: string
+}
+
+// Excel.propTypes = {
+//   schema: PropTypes.arrayOf(
+//     PropTypes.object
+//   ),
+//   initialData: PropTypes.arrayOf(
+//     PropTypes.object
+//   ),
+//   onDataChange: PropTypes.func,
+// };
+//
+// Excel.defaultProps = {
+//   onDataChange: () => {}
+// };
+
+class Excel extends Component<Props, State> {
+
+  props: Props;
+  state: State;
+
+  static defaultProps = {
+    onDataChange: () => {}
+  };
+
+  constructor(props:Props) {
     super(props);
 
     this.state = {
@@ -20,7 +69,7 @@ class Excel extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:Props) {
     this.setState({data: nextProps.initialData});
   }
 
@@ -270,19 +319,19 @@ class Excel extends Component {
 
 }
 
-Excel.propTypes = {
-  schema: PropTypes.arrayOf(
-    PropTypes.object
-  ),
-  initialData: PropTypes.arrayOf(
-    PropTypes.object
-  ),
-  onDataChange: PropTypes.func,
-};
-
-Excel.defaultProps = {
-  onDataChange: () => {}
-};
+// Excel.propTypes = {
+//   schema: PropTypes.arrayOf(
+//     PropTypes.object
+//   ),
+//   initialData: PropTypes.arrayOf(
+//     PropTypes.object
+//   ),
+//   onDataChange: PropTypes.func,
+// };
+//
+// Excel.defaultProps = {
+//   onDataChange: () => {}
+// };
 
 
 export default Excel;
