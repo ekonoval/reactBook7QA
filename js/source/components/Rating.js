@@ -1,8 +1,23 @@
+/*@flow*/
 import classNames from 'classnames';
 import React, {Component, PropTypes} from 'react';
 
-class Rating extends Component {
-  constructor(props) {
+type Props = {
+  defaultValue: number,
+  readonly: boolean,
+  max: number
+};
+
+class Rating extends Component<Props> {
+  props: Props;
+
+  static defaultProps = {
+    defaultValue: 0,
+    max: 5,
+    readonly: false,
+  };
+
+  constructor(props:Props) {
     super(props);
 
     this.state = {
@@ -75,15 +90,15 @@ class Rating extends Component {
   }
 }
 
-Rating.propTypes = {
-  defaultValue: PropTypes.number,
-  readonly: PropTypes.bool,
-  max: PropTypes.number
-};
-
-Rating.defaultProps = {
-  defaultValue: 0,
-  max: 5
-};
+// Rating.propTypes = {
+//   defaultValue: PropTypes.number,
+//   readonly: PropTypes.bool,
+//   max: PropTypes.number
+// };
+//
+// Rating.defaultProps = {
+//   defaultValue: 0,
+//   max: 5
+// };
 
 export default Rating;
