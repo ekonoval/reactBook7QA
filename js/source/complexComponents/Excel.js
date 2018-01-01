@@ -8,6 +8,8 @@ import Form from '../components/Form';
 import FormInput from '../components/FormInput';
 import Rating from '../components/Rating';
 
+import invariant from 'invariant';
+
 type Data = Array<Object>;
 
 type Props = {
@@ -73,11 +75,11 @@ class Excel extends Component<Props, State> {
     this.setState({data: nextProps.initialData});
   }
 
-  _fireDataChange(data) {
+  _fireDataChange(data:Data) {
     this.props.onDataChange(data);
   }
 
-  _sort(key) {
+  _sort(key:string) {
     let data = Array.from(this.state.data);
     const descending = this.state.sortby === key && !this.state.descending;
     data.sort(function (a, b) {
@@ -93,19 +95,22 @@ class Excel extends Component<Props, State> {
     this._fireDataChange(data);
   }
 
-  _showEditor(e) {
+  _showEditor(e:Event) {
+    const target = ((e.target:any):HTMLElement);
+
     this.setState({
       edit: {
-        row: parseInt(e.target.dataset.row, 10),
-        key: e.target.dataset.key,
+        row: parseInt(target.dataset.row, 10),
+        key: target.dataset.key,
       }
     });
   }
 
-  _save(e) {
+  _save(e:Event) {
     e.preventDefault();
     const value = this.refs.input.getValue();
     let data = Array.from(this.state.data);
+    invariant(this.state.edit, 'Messed up edit state');
     data[this.state.edit.row][this.state.edit.key] = value;
     this.setState({
       edit: null,
@@ -114,20 +119,20 @@ class Excel extends Component<Props, State> {
     this._fireDataChange(data);
   }
 
-  _editorKeyDown(e) {
+  _editorKeyDown(e:Event) {
     // escape
     if (e.keyCode === 27) {
       this.setState({edit: null});
     }
   }
 
-  _actionClick(rowidx, action, p3) {
+  _actionClick(rowidx:number, action:string, p3:any) {
     // console.log(arguments);
     // console.log(rowidx, action);
     this.setState({dialog: {type: action, idx: rowidx}});
   }
 
-  _deleteConfirmationClick(action) {
+  _deleteConfirmationClick(action:string) {
     if (action === 'dismiss') {
       this._closeDialog();
       return;
