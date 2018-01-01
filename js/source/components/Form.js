@@ -3,7 +3,7 @@ import FormInput from './FormInput';
 import Rating from './Rating';
 import React, {Component, PropTypes} from 'react';
 
-import FormInputField from "./FormInput";
+import type {FormInputField, FormInputFieldValue} from "./FormInput";
 
 type FormProps = {
   fields: Array<FormInputField>,
@@ -26,20 +26,20 @@ class Form extends Component<FormProps> {
 
   props: FormProps;
 
-  getData() {
-    let data = {};
-    this.props.fields.forEach(field =>
-      data[field.id] = this.refs[field.id].getValue()
-    );
-    return data;
-  }
+  // getData() {
+  //   let data = {};
+  //   this.props.fields.forEach(field =>
+  //     data[field.id] = this.refs[field.id].getValue()
+  //   );
+  //   return data;
+  // }
 
   render() {
     return (
       <form className="Form">
-      {this.props.fields.map(field => {
+      {this.props.fields.map((field:FormInputField) => {
         // isset behavior - interesting
-        const prefilledVal = this.props.initialData && this.props.initialData[field.id];
+        const prefilledVal:FormInputFieldValue = (this.props.initialData && this.props.initialData[field.id]) || '';
 
         if (!this.props.readonly) {
           return (
