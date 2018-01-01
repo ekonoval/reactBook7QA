@@ -129,7 +129,7 @@ class Excel extends Component<Props, State> {
   _actionClick(rowidx:number, action:string, p3:any) {
     // console.log(arguments);
     // console.log(rowidx, action);
-    this.setState({dialog: {type: action, idx: rowidx}});
+    this.setState({dialog: {type: action, idx: rowidx, fake:'shmake'}});
   }
 
   _deleteConfirmationClick(action:string) {
@@ -138,7 +138,12 @@ class Excel extends Component<Props, State> {
       return;
     }
     let data = Array.from(this.state.data);
-    data.splice(this.state.dialog.idx, 1);
+
+    const index = this.state.dialog ? this.state.dialog.idx : null;
+    invariant(typeof index === 'number', 'Unexpected dialog state');
+
+
+    data.splice(index, 1);
     this.setState({
       dialog: null,
       data: data,
@@ -150,13 +155,17 @@ class Excel extends Component<Props, State> {
     this.setState({dialog: null});
   }
 
-  _saveDataDialog(action) {
+  _saveDataDialog(action:string) {
     if (action === 'dismiss') {
       this._closeDialog();
       return;
     }
     let data = Array.from(this.state.data);
-    data[this.state.dialog.idx] = this.refs.form.getData();
+
+    const index  = this.state.dialog ? this.state.dialog.idx : null;
+    invariant(typeof index === 'number', 'Unexpected dialog state');
+
+    data[index] = this.refs.form.getData();
     this.setState({
       dialog: null,
       data: data,
