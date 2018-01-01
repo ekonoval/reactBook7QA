@@ -8,8 +8,14 @@ type Props = {
   max: number
 };
 
-class Rating extends Component<Props> {
+type State = {
+  rating: number,
+  tmpRating: number,
+};
+
+class Rating extends Component<Props, State> {
   props: Props;
+  state: State;
 
   static defaultProps = {
     defaultValue: 0,
@@ -32,11 +38,11 @@ class Rating extends Component<Props> {
   }
 
   // on mouse over
-  setTemp(rating) {
+  setTemp(rating:number) {
     this.setState({tmpRating: rating});
   }
 
-  setRating(rating) {
+  setRating(rating:number) {
     this.setState({
       tmpRating: rating,
       rating: rating
@@ -47,7 +53,7 @@ class Rating extends Component<Props> {
     this.setTemp(this.state.rating);
   }
 
-  componentWillReceiveProps(nextProps) { // react to outside changes
+  componentWillReceiveProps(nextProps:Props) { // react to outside changes
     this.setRating(nextProps.defaultValue);
   }
 
