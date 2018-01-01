@@ -139,11 +139,7 @@ class Excel extends Component<Props, State> {
     }
     let data = Array.from(this.state.data);
 
-    const index = this.state.dialog ? this.state.dialog.idx : null;
-    invariant(typeof index === 'number', 'Unexpected dialog state');
-
-
-    data.splice(index, 1);
+    data.splice(this._getDialogIndex(), 1);
     this.setState({
       dialog: null,
       data: data,
@@ -162,10 +158,7 @@ class Excel extends Component<Props, State> {
     }
     let data = Array.from(this.state.data);
 
-    const index  = this.state.dialog ? this.state.dialog.idx : null;
-    invariant(typeof index === 'number', 'Unexpected dialog state');
-
-    data[index] = this.refs.form.getData();
+    data[this._getDialogIndex()] = this.refs.form.getData();
     this.setState({
       dialog: null,
       data: data,
@@ -199,8 +192,15 @@ class Excel extends Component<Props, State> {
     }
   }
 
+  _getDialogIndex() {
+    const index = this.state.dialog ? this.state.dialog.idx : null;
+    invariant(typeof index === "number", 'Unexpected dialog state');
+
+    return index;
+  }
+
   _renderDeleteDialog() {
-    const row = this.state.data[this.state.dialog.idx];
+    const row = this.state.data[this._getDialogIndex()];
     const nameguess = row[Object.keys(row)[0]];
 
     return (
