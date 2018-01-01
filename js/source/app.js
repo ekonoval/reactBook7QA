@@ -1,3 +1,4 @@
+//@flow
 'use strict';
 
 import Logo from './components/Logo';
@@ -6,7 +7,7 @@ import ReactDOM from 'react-dom';
 import Whinepad from './complexComponents/Whinepad';
 import schema from './schema';
 
-let data = JSON.parse(localStorage.getItem('data'));
+let data = JSON.parse(localStorage.getItem('data') || '');
 
 // default example data, read from the schema
 if (!data) {
@@ -22,5 +23,6 @@ ReactDOM.render(
     </div>
     <Whinepad schema={schema} initialData={data}/>
   </div>,
-  document.getElementById('pad')
+  (document.getElementById('pad'): any)
+  // ((document.getElementById('pad'): any): Element)
 );
