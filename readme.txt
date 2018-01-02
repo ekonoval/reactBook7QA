@@ -23,3 +23,9 @@ package.json - parser HAS TO BE KEPT HERE!!!
 
 
 eslint js/source/app.js
+
+
+---------------- tests
+npm view <package> versions
+npm i --save-dev babel-jest babel-core
+npm i --save-dev react-addons-test-utils@15.0.2

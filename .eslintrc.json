@@ -15,9 +15,19 @@
   },
   "env": {
     "browser": true,
+    "jest": true,
     "es6": true
   },
   "extends": "eslint:recommended",
+  "jest": {
+    "scriptPreprocessor": "node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "node_modules/react",
+      "node_modules/react-dom",
+      "node_modules/react-addons-test-utils",
+      "node_modules/fbjs"
+    ]
+  },
   "rules": {
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1
