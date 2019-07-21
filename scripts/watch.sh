@@ -1,1 +1,1 @@
-watch "sh scripts/build.sh" js/source/ css/
+npx watch "sh scripts/build.sh" js/source/ css/
